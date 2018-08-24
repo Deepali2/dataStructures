@@ -120,11 +120,30 @@ function LinkedList(){
     return `${currentNode.element} at index ${index} has been removed` ;
   };
 
+  //function to list all the elements of the list in order
+  this.list = () => {
+    console.log('hi')
+    let string = '';
+    let currentNode = head;
+    console.log(this.size());
+    console.log(currentNode)
+    while(currentNode) {
+      string += currentNode.element + ' ';
+      currentNode = currentNode.next;
+    }
+    return string;
+  };
+
 };
 
+
+//testing
 const testList = new LinkedList();
+
 testList.add('kitten');
+console.log(testList.indexOf('kitten'));
 testList.add('Puppy');
+console.log(testList.indexOf('Puppy'));
 testList.add('Horse');
 testList.add('Cat');
 testList.add('Parrot');
@@ -138,7 +157,7 @@ console.log(testList.isEmpty());
 console.log(testList.indexOf('Horse'));
 console.log(testList.indexOf('Donkey'));
 console.log(testList.indexOf('Parrot'));
-
+console.log(testList.list());
 console.log(testList.remove('Parrot'));
 console.log(testList.elementAt(2));
 console.log(testList.addAt('Whale', 1));
@@ -147,3 +166,5 @@ console.log(testList.head());
 console.log(testList.indexOf('Cat'));
 console.log(testList.removeAt(4));
 console.log(testList.indexOf('Cat'));
+console.log(testList.list());
+

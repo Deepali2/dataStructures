@@ -86,18 +86,46 @@ function DoublyLinkedList() {
       return this.addToFront(element);
     }
     if (position === this.size()) {
-      console.log('I am he');
       return this.addToBack(element);
     }
+    let node = new Node(element);
     let mean = this.size()/2;
     if (position <= mean) {
-      
-      
+      let currentNode = head;
+      let counter = 0;
+      while( counter < position - 1) {
+        currentNode = currentNode.next;
+        counter++;
+      }
+      let nextNode = currentNode.next;
+      currentNode.next = node;
+      node.next = nextNode;      
     } else {
-
+      let currentNode = tail;
+      let counter = 0;
+      while (counter > position) {
+        currentNode = currentNode.previous;
+        counter++;
+      }
+      let previousNode = currentNode.previous;
+      currentNode.previous = node;
+      node.previous = previousNode;
     }
+    length++;
+    return `${element} has been added at index ${position}`;
   };
-  length++;
+
+  //function to list all the elements in the list in order
+  this.list = () => {
+    let currentNode = head;
+    let string = '';
+    while(currentNode) {
+      string += currentNode.element + ' ';
+      currentNode = currentNode.next;
+    }
+    return string;
+  };
+  
 }
 
 
@@ -106,6 +134,7 @@ const testingDoubleList = new DoublyLinkedList();
 console.log(testingDoubleList);
 console.log(testingDoubleList.size());
 console.log(testingDoubleList.head()); 
+
 
 //testing addToBack function
 console.log(testingDoubleList.addToBack('elephant'));
@@ -124,6 +153,7 @@ console.log(testingDoubleList.indexOf('elephant'));
 console.log(testingDoubleList.indexOf('lion'));
 console.log(testingDoubleList.indexOf('peacock'));
 console.log(testingDoubleList.indexOf('bird'));
+console.log(testingDoubleList.list());
 
 //testing addToFront function
 console.log(testingDoubleList.addToFront('Giraffe'));
@@ -140,6 +170,9 @@ console.log(testingDoubleList.indexOf('lion'));
 console.log(testingDoubleList.indexOf('peacock'));
 console.log(testingDoubleList.indexOf('bird'));
 
+//testing list function
+console.log(testingDoubleList.list());
+
 //testing addAt function
 console.log(testingDoubleList.size())
 console.log(testingDoubleList.addAt(10, 'dog'));
@@ -154,3 +187,5 @@ console.log(testingDoubleList.indexOf('lion'));
 console.log(testingDoubleList.indexOf('peacock'));
 console.log(testingDoubleList.indexOf('bird'));
 console.log(testingDoubleList.indexOf('horse'));
+console.log(testingDoubleList.head()); 
+console.log(testingDoubleList.addAt(3, 'alligator'));
