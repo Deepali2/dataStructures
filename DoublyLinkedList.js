@@ -73,6 +73,31 @@ function DoublyLinkedList() {
     return `${element} does not exist in the list`;
   };  
 
+  //function to add an element at a given index
+  this.addAt = (position, element) => {
+    if (position < 0) {
+      return 'index cannot be less than 0';
+    }
+    if (position > this.size()) {
+      return `index cannot be greater than ${this.size() + 1}`
+    }
+    if (position === 0) {
+      console.log('I am at 0');
+      return this.addToFront(element);
+    }
+    if (position === this.size()) {
+      console.log('I am he');
+      return this.addToBack(element);
+    }
+    let mean = this.size()/2;
+    if (position <= mean) {
+      
+      
+    } else {
+
+    }
+  };
+  length++;
 }
 
 
@@ -115,3 +140,17 @@ console.log(testingDoubleList.indexOf('lion'));
 console.log(testingDoubleList.indexOf('peacock'));
 console.log(testingDoubleList.indexOf('bird'));
 
+//testing addAt function
+console.log(testingDoubleList.size())
+console.log(testingDoubleList.addAt(10, 'dog'));
+console.log(testingDoubleList.addAt(-1, 'dog'));
+console.log(testingDoubleList.addAt(7, 'horse'));
+console.log(testingDoubleList.addAt(0, 'donkey'));
+console.log(testingDoubleList.indexOf('donkey'));
+console.log(testingDoubleList.indexOf('Dinosaur'));
+console.log(testingDoubleList.indexOf('Giraffe'));
+console.log(testingDoubleList.indexOf('elephant'));
+console.log(testingDoubleList.indexOf('lion'));
+console.log(testingDoubleList.indexOf('peacock'));
+console.log(testingDoubleList.indexOf('bird'));
+console.log(testingDoubleList.indexOf('horse'));
